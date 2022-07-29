@@ -10,8 +10,11 @@ const PORT= process.env.PORT || 3500;
 //mongo connexion
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/CRMdb', {
-    useNewUrlParser: true
-});
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log("Connect on database"))
+.catch((error) => console.log("error to connect database:::", error));
 
 //body parser
 app.use(bodyParser.urlencoded({extended: true}));
